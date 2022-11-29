@@ -1,7 +1,7 @@
 {
   "name": "background",
   "displayName": "background",
-  "description": "Bring background images to your vscode",
+  "description": "Bring background images to your vscode(Masahiro's fork)",
   "version": "1.2.7",
   "scripts": {
     "vscode:prepublish": "npm run compile",
@@ -65,6 +65,16 @@
           "type": "boolean",
           "default": true,
           "markdownDescription": "%extension.background.useDefault.description%"
+        },
+        "background.displayInPanels": {
+          "type": "boolean",
+          "default": false,
+          "markdownDescription": "パネルに画像を表示させるかどうかを制御します。"
+        },
+        "background.panelImage": {
+          "type": "string",
+          "default": "",
+          "markdownDescription": "パネルに表示する画像を設定します。"
         },
         "background.style": {
           "type": "object",

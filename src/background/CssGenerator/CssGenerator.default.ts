@@ -10,6 +10,8 @@ import { AbsCssGenerator, css } from './CssGenerator.base';
 export class DefaultGeneratorOptions {
     useFront = true;
     useDefault = true;
+    displayInPanels = false;
+    panelImage = '';
     style: any = {};
     styles: Array<any> = [];
     customImages: string[] = [];
@@ -71,7 +73,7 @@ export class DefaultCssGenerator extends AbsCssGenerator<DefaultGeneratorOptions
     }
 
     protected async getCss(options: DefaultGeneratorOptions) {
-        const { useDefault, customImages, style, styles, useFront, loop, interval } = {
+        const { useDefault, customImages, displayInPanels, panelImage, style, styles, useFront, loop, interval } = {
             ...new DefaultGeneratorOptions(),
             ...options
         };
@@ -84,6 +86,26 @@ export class DefaultCssGenerator extends AbsCssGenerator<DefaultGeneratorOptions
 
         // ------ 在前景图时使用 ::after ------
         const frontContent = useFront ? 'after' : 'before';
+
+        //パネルに画像を表示するcss(めっちゃハードコード)
+
+        const panelContent = displayInPanels
+            ? css`
+                  .split-view-view > .panel > .content::before {
+                      background-image: url('${panelImage}');
+                      content: '';
+                      pointer-events: none;
+                      position: absolute;
+                      z-index: 99999;
+                      width: 100%;
+                      height: 100%;
+                      background-position: 100% calc(100% - 35px);
+                      background-repeat: no-repeat;
+                      opacity: 0.5;
+                      background-size: 10vw 10vw;
+                  }
+              `
+            : '';
 
         // ------ 生成样式 ------
         return css`
@@ -110,6 +132,7 @@ export class DefaultCssGenerator extends AbsCssGenerator<DefaultGeneratorOptions
                     `;
                 })}
             }
+            ${panelContent}
         `;
     }
 }
