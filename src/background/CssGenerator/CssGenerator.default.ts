@@ -11,7 +11,8 @@ export class DefaultGeneratorOptions {
     useFront = true;
     useDefault = true;
     displayInPanels = false;
-    panelImage = '';
+    panelImages = [];
+    panelStyle = {};
     style: any = {};
     styles: Array<any> = [];
     customImages: string[] = [];
@@ -73,7 +74,18 @@ export class DefaultCssGenerator extends AbsCssGenerator<DefaultGeneratorOptions
     }
 
     protected async getCss(options: DefaultGeneratorOptions) {
-        const { useDefault, customImages, displayInPanels, panelImage, style, styles, useFront, loop, interval } = {
+        const {
+            useDefault,
+            customImages,
+            displayInPanels,
+            panelImages,
+            panelStyle,
+            style,
+            styles,
+            useFront,
+            loop,
+            interval
+        } = {
             ...new DefaultGeneratorOptions(),
             ...options
         };
@@ -87,22 +99,14 @@ export class DefaultCssGenerator extends AbsCssGenerator<DefaultGeneratorOptions
         // ------ 在前景图时使用 ::after ------
         const frontContent = useFront ? 'after' : 'before';
 
-        //パネルに画像を表示するcss(めっちゃハードコード)
+        const panelStyleCss = this.getStyleByOptions(panelStyle, true);
+        //パネルに画像を表示するcss
 
         const panelContent = displayInPanels
             ? css`
                   .split-view-view > .panel > .content::before {
-                      background-image: url('${panelImage}');
-                      content: '';
-                      pointer-events: none;
-                      position: absolute;
-                      z-index: 99999;
-                      width: 100%;
-                      height: 100%;
-                      background-position: 100% calc(100% - 35px);
-                      background-repeat: no-repeat;
-                      opacity: 0.5;
-                      background-size: 10vw 10vw;
+                      background-image: url('${panelImages[0]}');
+                      ${panelStyleCss}
                   }
               `
             : '';
