@@ -1,10 +1,10 @@
-<!-- 中英文切换 -->
+<!-- 语言切换 -->
 <div align="right">
 
 [English](./README.md) | [中文](./README.zh-CN.md) | [日本語](./README.ja-JP.md)
 
 </div>
-<!-- 中英文切换 end -->
+<!-- 语言切换 end -->
 
 <!-- 封面区域 -->
 <div align="center">
@@ -15,7 +15,7 @@
 
 ### [Visual Studio Code](https://code.visualstudio.com) にも背景画像を。
 
-`エディターごとの画像表示`、`全画面の画像表示`、`画像の切り替わり`、`画像・CSSのカスタマイズ`...
+`エディターごとの画像表示`、`全画面の画像表示`、`画像の切り替え`、`画像・CSSのカスタマイズ`...
 
 [GitHub](https://github.com/shalldie/vscode-background) | [Visual Studio Marketplace](https://marketplace.visualstudio.com/items?itemName=shalldie.background)
 
@@ -36,25 +36,25 @@
 
 <img width="880" src="https://user-images.githubusercontent.com/9987486/40583705-7105dda8-61c6-11e8-935a-3c5d475a1eb1.gif">
 
-背景画像の全画面表示
+背景画像のフルスクリーン表示
 
 <img width="880" src="https://user-images.githubusercontent.com/9987486/198958380-6eaf96c7-3aa2-4fce-b27e-6f33c8d4e2c1.png">
 
 ## インストール
 
-サイドバーの拡張機能タブから`background`を検索！
+`Ctrl+P`でコマンドパレットを開き以下を入力します。
 
 ```
 ext install background
 ```
 
-## カスタマイズ
+## 設定方法
 
 `settings.json`からユーザー設定をカスタマイズすることができます。
 
 [settings.json とは](https://code.visualstudio.com/docs/getstarted/settings#_settingsjson) | [設定方法](https://github.com/shalldie/vscode-background/issues/274)
 
-## コンフィグ
+## 設定
 
 ### 基本設定
 
@@ -82,7 +82,7 @@ ext install background
 
 | 設定                    |  タイプ  | デフォルト | 説明                        |
 | :---------------------- | :------: | :--------: | :-------------------------- |
-| `background.fullscreen` | `Object` |   `null`   | Set the image to fullscreen |
+| `background.fullscreen` | `Object` |   `null`   | フルスクリーン用の画像を設定します。 |
 
 example:
 
@@ -110,7 +110,7 @@ example:
 
 2. カスタムイメージを使用する
 
-**https** 通信を採用しているリンクを使用する必要があります， http 通信は VSCode により制限されています。
+**https** 通信を採用している URL を使用する必要があります。 (http 通信は VSCode により制限されています。)
 
 ```json
 {
@@ -144,7 +144,7 @@ example:
 ```json
 {
   "background.fullscreen": {
-    "image": "https://pathtoimage.png", // URLもしくはファイルパス(file:///~/~.png)
+    "image": "https://pathtoimage.png", // URL もしくはファイルパス(file:///~/~.png)
     // "image": ["https://pathtoimage.png"], // 配列を使用することで複数の画像を設定できます
     "opacity": 0.91, // 0.85 ~ 0.95 がおすすめです
     "size": "cover", // CSSのbackground-sizeに相当します。`cover` ,`contain`,`200px 200px` のように設定します
@@ -157,7 +157,7 @@ example:
 
 > **この拡張機能は、VSCode 本体の CSS ファイルを編集することで機能します。**
 >
-> そのため、初回インストール時または vscode 更新時に警告が表示されます，[二度と表示しない] をクリックして非表示にできます。
+> そのため、初回インストール時または VSCode 更新時に警告が表示されます，「二度と表示しない」 をクリックして非表示にできます。
 
 ![](https://user-images.githubusercontent.com/9987486/40583926-b1fb5398-61ca-11e8-8271-4ac650d158d3.png)
 
@@ -165,28 +165,26 @@ example:
 
 ![](https://user-images.githubusercontent.com/9987486/40583775-91d4c8d6-61c7-11e8-9048-8c5538a32399.png)
 
-## アンインストール
+## アンインストール方法
 
-    ３つの方法
+    方法1. (おすすめ)
 
-    1. (おすすめ)
-
-    F1キーを押し、コマンドパネルを開ます。
-    「Background -Uninstall (remove extension)」と入力して、
+    `Shift+Ctrl+P`でコマンドパレットを開きます。
+    「Background - Uninstall (remove extension)」と入力して、
     自動アンインストールします。
 
-    2.
+    方法2.
 
-    setting.jsonで{"background.enabled": false}  と変更してから　　
+    setting.jsonで{"background.enabled": false}  と変更し、リロードしてから　　
     手動でアンインストールします。
 
-    3. An unfriendly way:
+    方法3. (非推奨)
 
-    If you uninstall this plugin directly, don't worry.
-    Exit vscode completely, then open, then reload. Now it's clean :D
-    (I know it's strange... Because of the limit of vscode)
+    通常の方法で拡張機能をアンインストールしてしまったとしても安心してください。
+    VSCodeを完全に終了してから、再度開きリロードすると拡張機能は無効になっています。
+    (おかしいようですが、VScodeの制限により強制的に無効化されます)
 
-## 貢献者 🙏
+## コントリビューター 🙏
 
 [<img alt="shalldie" src="https://avatars3.githubusercontent.com/u/9987486?v=4" width="80">](https://github.com/shalldie)
 [<img alt="NoDocCat" src="https://avatars.githubusercontent.com/u/20502666?v=4" width="80">](https://github.com/NoDocCat)
@@ -207,21 +205,21 @@ example:
 
 ---
 
-    Q: [Code インストールが壊れている可能性があります。]を消すには?
-    A: 確認してください: https://github.com/lehni/vscode-fix-checksums
+    Q: 「Code インストールが壊れている可能性があります。」を消すには?
+    A: こちらをご確認ください: https://github.com/lehni/vscode-fix-checksums
 
 ---
 
-    Q: MACに拡張機能をインストールしましたが、機能しません。
+    Q: Macに拡張機能をインストールしましたが、機能しません。
     A: `Visual Studio Code` を`Download`フォルダー から`Applications`フォルダーに移動してください。
 
 ---
 
-    Q: The extension runs based on the modified vscode CSS file, and will try to raise the right within a limited time.
-       If it stop working for some reason, what if users need to change their permissions?
+    Q: この拡張機能はCSSを書き換えることによって動きますが、権限がない場合には権限を昇格しようとします。
+       何らかの理由により権限が自動で昇格されず、拡張機能が正常に動かない場合どうすればいいですか？
 
-    A: In windows,click right button on the vscode's icon,then check the [run with the administrator authority].
-    A: in mac/linux, try this: https://github.com/shalldie/vscode-background/issues/6 .
+    A: Windowsの場合、デスクトップ等でVSCodeを右クリックし、「管理者として実行」します。
+       MacやLinuxの場合、こちらを試してください: https://github.com/shalldie/vscode-background/issues/6
 
 ---
 
